@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ユーザー登録</title>
+    <style>
+        body {
+            background-color: #F0F0F0; /* デフォルトの背景色 */
+            font-family: Arial, sans-serif;
+            color: #333; /* デフォルトのテキストカラー */
+            max-width: 600px; /* コンテンツの最大幅 */
+            margin: 20px auto; /* 中央寄せ */
+            padding: 20px;
+            border-radius: 8px; /* 角丸 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 軽い影 */
+        }
+
+        h2 {
+            color: #555; /* セクションタイトルのテキストカラー */
+        }
+
+        form {
+            background-color: #FFF; /* フォームの背景色 */
+            padding: 20px;
+            border-radius: 8px; /* 角丸 */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* 軽い影 */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333; /* ラベルのテキストカラー */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="radio"] {
+            width: calc(100% - 20px); /* 幅 */
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #DDD; /* ボーダー */
+            border-radius: 4px; /* 角丸 */
+            box-sizing: border-box; /* ボックスサイズをborder-boxに */
+            font-size: 14px;
+        }
+
+        .role-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .role-options label {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #6EB5A5; /* ボタンの背景色 */
+            color: #FFF; /* ボタンのテキストカラー */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px; /* 角丸 */
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4C8C7D; /* ホバー時の背景色 */
+        }
+    </style>
+</head>
+<body>
+    <h2>ユーザー登録</h2>
+    <form action="{{ url_for('register') }}" method="post">
+        <label for="name">氏名:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label>役割:</label>
+        <div class="role-options">
+            <label for="student">
+                <input type="radio" id="student" name="role" value="学生" required>
+                学生
+            </label>
+            <label for="teacher">
+                <input type="radio" id="teacher" name="role" value="教員" required>
+                教員
+            </label>
+            <label for="staff">
+                <input type="radio" id="staff" name="role" value="職員" required>
+                職員
+            </label>
+        </div>
+        <label for="email">メールアドレス:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" value="登録">
+    </form>
+</body>
+</html>

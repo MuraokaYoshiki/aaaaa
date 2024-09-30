@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者用ページ</title>
+    <!-- Add your CSS links here -->
+</head>
+<body>
+    <h1>管理者用ページ</h1>
+
+    <!-- ログアウトボタン -->
+    <form action="/logout" method="GET">
+        <button type="submit">ログアウト</button>
+    </form>
+
+    <h2>健康記録</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>日付(月)</th>
+                <th>日付(日)</th>
+                <th>体温(℃)</th>
+                <!-- Add other fields here -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in health_records %}
+            <tr>
+                <td>{{ record.months }}</td>
+                <td>{{ record.days }}</td>
+                <td>{{ record.bodytemperature }}</td>
+                <!-- Add other fields here -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>感染記録</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>日付(月)</th>
+                <th>日付(日)</th>
+                <th>役割</th>
+                <!-- Add other fields here -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for infection in infection_records %}
+            <tr>
+                <td>{{ infection.months }}</td>
+                <td>{{ infection.days }}</td>
+                <td>{{ infection.yakuwari }}</td>
+                <!-- Add other fields here -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>通知</h2>
+    <ul>
+        {% for notification in notifications %}
+        <li>{{ notification.tokkizikou }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>体調記録不足の利用者</h2>
+    <ul>
+        {% for user in users_lacking_records %}
+        <li>{{ user.namae }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>感染者一覧</h2>
+    <ul>
+        {% for infected_user in infected_users %}
+        <li>{{ infected_user.namae }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add other sections as needed -->
+
+</body>
+</html>

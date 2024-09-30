@@ -1,0 +1,21 @@
+<!-- ex0701-se_update3_form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+            <form action="/se_update4" method="POST">
+                学籍番号{{form_data.gakusekicode}}<br>
+                年度<input type="text" name="season" value="{{form_data.season}}"><br>
+                科目<input type="text" name="kamoku" value="{{form_data.kamoku}}"><br>
+                点数<input type="text" name="score" value="{{form_data.score}}"><br>
+                <input type="hidden" name="seisekiID" value="{{form_data.seisekiID}}">
+                <input type="hidden" name="gakusekicode" value="{{form_data.gakusekicode}}">
+                <input type="submit" value="レコード更新">
+                <input type="reset" value="Reset">
+            </form>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!-- ex0701-ga_insert_form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+            <form action="/ga_insert2" method="POST">
+                学籍番号<input type="text" name="gakusekicode" ><br>
+                名前<input type="text" name="namae" >
+                GG教員<input type="text" name="ggteacher"><br>
+                <input type="hidden" name="gakusekiID" >
+                <input type="submit" value="レコード挿入">
+                <input type="reset" value="Reset">
+            </form>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!-- ex0701-se_insert_form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+            <form action="/se_insert2" method="POST">
+                学籍番号　氏名
+                <!--gakusekicodeを次のフォームに受け渡すためのSELECTボックス-->
+                <!--入力-->
+                
+                年度<input type="text" name="season" ><br>
+                科目<input type="text" name="kamoku" ><br>
+                得点<input type="text" name="score"><br>
+                <input type="submit" value="レコード挿入">
+                <input type="reset" value="Reset">
+            </form>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ホームページ</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* 薄い灰色の背景 */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 40px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff; /* コンテンツの背景色 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        h1, h2, p {
+            color: #333333; /* テキストの色 */
+        }
+        a {
+            color: #336699; /* リンクの色 */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .upload-form {
+            margin-top: 20px;
+            border-top: 1px solid #cccccc; /* 上部の境界線 */
+            padding-top: 20px;
+        }
+        .upload-form label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+        }
+        .upload-form input[type="file"] {
+            width: calc(100% - 16px);
+            padding: 8px;
+            border: 1px solid #cccccc; /* 入力欄の枠線色 */
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f0f0f0; /* 入力欄の背景色 */
+        }
+        .upload-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6EB5A5; /* ボタンの背景色 */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #FFF; /* ボタンの文字色 */
+        }
+        .upload-form input[type="submit"]:hover {
+            background-color: #4C8C7D; /* ホバー時のボタンの背景色 */
+        }
+        .message {
+            margin-top: 16px;
+            color: #ff0000; /* メッセージの文字色 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>こんにちは、{{ username }}さん！</h1>
+        <a href="{{ url_for('logout') }}">ログアウト</a>
+        <div class="upload-form">
+            <h2>記録を提出してください</h2>
+            <form action="{{ url_for('upload_record') }}" method="post" enctype="multipart/form-data">
+                <label for="csv_file">CSVファイルを選択:</label>
+                <input type="file" id="csv_file" name="csv_file" accept=".csv" required><br><br>
+                <input type="submit" value="アップロード">
+            </form>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

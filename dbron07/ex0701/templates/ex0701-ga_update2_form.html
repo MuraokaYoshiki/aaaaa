@@ -1,0 +1,20 @@
+<!-- ex0701-ga_update2_form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+            <form action="/ga_update3" method="POST">
+                学籍番号 【入力】<br>  <!--学籍番号は変更させない-->
+                名前<input type="text" name="namae" value="【入力】">
+                GG教員<input type="text" name="ggteacher" value="{{form_data.ggteacher}}"><br>
+                退学(1=退学)<input type="text" name="delflag" value="{{form_data.delflag}}"><br>
+                <input type="hidden" name="gakusekiID" value="{{form_data.gakusekiID}}">
+                <input type="submit" value="レコード更新">
+                <input type="reset" value="Reset">
+            </form>
+    </body>
+</html>

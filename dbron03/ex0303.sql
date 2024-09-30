@@ -1,0 +1,14 @@
+CREATE DATABASE if NOT EXISTS dbron03;
+USE dbron03;
+DROP TABLE if EXISTS meibo03;
+CREATE TABLE meibo03(
+	meibo03ID INT NOT NULL AUTO_INCREMENT ,
+	namae VARCHAR(30),
+	yomi VARCHAR(50),
+	spec FLOAT,
+	wcnt INT,
+	lastupdate DATETIME,
+	PRIMARY KEY(meibo03ID)
+);
+SHOW TABLES;
+DESC meibo03;

@@ -1,0 +1,20 @@
+<!-- pr0701-top_form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <form action="/upload_csv" method="POST" enctype="multipart/form-data">
+            アップロードするcsvファイル
+            <input type="file" name="upfile"><br>
+            <input type="submit" value="submit">
+            <input type="reset" value="reset">
+        </form>
+        <hr>
+        出席データの集計結果を<a href="/kakunin">表示する</a>
+    </body>
+</html>
+

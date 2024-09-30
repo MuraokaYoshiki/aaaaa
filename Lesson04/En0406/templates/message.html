@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <pre>{{message}}</pre>
+        
+        
+        <table border>
+            <tr>
+               <th>月</th>
+               <th>Y1960~</th>
+               <th>Y1980~</th>
+               <th>Y2000~</th>
+            </tr>
+            {% for row_data in table_data %}
+            <tr>
+                {% for item in row_data %}
+                    <td>{{item}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </table> 
+        <img src="{{image}}" >
+
+    </body>
+</html>

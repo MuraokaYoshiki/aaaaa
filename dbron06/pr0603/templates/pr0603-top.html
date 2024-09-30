@@ -1,0 +1,23 @@
+<!-- ex0602-top.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <a href="/total1" >全研究室の注文総額を表示する</a>
+        <hr>
+        <form action="/detail1" method="POST">
+            研究室ごとの注文明細を表示する<br>
+            {% for item in radio_data.values %}
+                <input type="radio" name="cname" value="{{item}}">{{item}}
+            {% endfor %}
+            <br>
+            <input type="submit" value="集計">
+            <input type="reset" value="reset"> 
+            
+        </form>
+    </body>
+</html>

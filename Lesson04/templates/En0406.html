@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <form action="/search" method="POST">
+            観測地点
+            <input type="radio" name="Area" value="Sapporo" checked>Sapporo
+            <input type="radio" name="Area" value="Sendai">Sendai
+            <input type="radio" name="Area" value="Tokyo">Tokyo
+            <input type="radio" name="Area" value="Suwa">Suwa
+            <input type="radio" name="Area" value="Nagoya">Nagoya
+            <input type="radio" name="Area" value="Osaka">Osaka
+            <input type="radio" name="Area" value="Fukuoka">Fukuoka
+            <input type="radio" name="Area" value="Naha">Naha<br>
+            気象データ
+            <input type="radio" name="temp" value="Temp_mean" checked>月別平均気温
+            <input type="radio" name="temp" value="Temp_max">月別平均最高気温
+            <input type="radio" name="temp" value="Temp_min">月別平均最低気温
+            <input type="radio" name="temp" value="Precipitation">降水量
+            <input type="radio" name="temp" value="Sunshine">日照時間
+            <input type="submit" value="Search">
+        </form>
+    </body>
+</html>

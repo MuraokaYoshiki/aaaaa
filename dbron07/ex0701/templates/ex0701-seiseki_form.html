@@ -1,0 +1,21 @@
+<!-- fuku0501-top.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+            <form action="/insert2" method="POST">
+                学籍番号<input type="text" name="gakuseki" ><br>
+                名前<input type="text" name="namae" >
+                　読み<input type="text" name="yomi" ><br>
+                年度<input type="text" name="acyear" >
+                数学<input type="text" name="math" >
+                英語<input type="text" name="eng" ><br>
+                <input type="submit" value="レコード挿入">
+                <input type="reset" value="Reset">
+            </form>
+    </body>
+</html>

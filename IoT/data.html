@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Data</title>
+</head>
+<body>
+    <span>{{ name }}</span>
+
+    <!-- Form to select data type and limit -->
+    <form method="POST" action="/data">
+        <label for="data_type">Data Type:</label>
+        <select name="data_type" id="data_type">
+            <option value="light" {% if data_type == 'light' %}selected{% endif %}>Light</option>
+            <option value="temperature" {% if data_type == 'temperature' %}selected{% endif %}>Temperature</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <label for="limit">Number of Records:</label>
+        <select name="limit" id="limit">
+            <option value="10" {% if limit == 10 %}selected{% endif %}>10</option>
+            <option value="20" {% if limit == 20 %}selected{% endif %}>20</option>
+            <option value="50" {% if limit == 50 %}selected{% endif %}>50</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>deviceID</th>
+            <th>Type</th>
+            <th>Value</th>
+            <th>dateTime</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <svg width="320" viewBox="0,0,120,120">
+        <path d="M10,10L10,110L110,110" stroke="#404040" fill="none" />
+        {% for item in items %}
+        <ellipse cx="{{ 120 - loop.index * 10 }}" cy="{{ 110 - item[2] * 0.1 }}" rx="2" ry="2" />
+        {% endfor %}
+    </svg>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者画面</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* 薄い灰色の背景 */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 14px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff; /* 入力欄の背景色 */
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        h1, h2, p {
+            color: #333333; /* タイトルとラベルの文字色 */
+        }
+        a {
+            color: #336699;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .table-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 20px;
+            overflow-x: auto;
+        }
+        table {
+            max-width: 250px;
+            background-color: #ffffff; /* 入力欄の背景色 */
+            border-collapse: collapse;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+            table-layout: fixed;
+            width: 100%;
+        }
+        table th, table td {
+            padding: 4px;
+            text-align: center;
+            border: 1px solid #cccccc; /* 入力欄の枠線色 */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
+        table th {
+            background-color: #f0f0f0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #6EB5A5; /* ボタンの背景色 */
+            color: white; /* ボタンの文字色 */
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 12px;
+            margin-top: 10px;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #4C8C7D; /* ホバー時のボタンの背景色 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ username }} 様の管理者画面</h1>
+
+        <p id="infection_count">感染者数: </p>
+        <p id="close_contact_count">濃厚接触者数: </p>
+
+        <div class="table-container">
+            <!-- 通知一覧 -->
+            <table border="1">
+                <caption>通知一覧</caption>
+                <tr>
+                    <th>学籍ID</th>
+                    <th>名前</th>
+                    <th>メールアドレス</th>
+                    <th>送信</th>
+                </tr>
+                {% for notification in notifications %}
+                <tr>
+                    <td>{{ notification.gakuseki_ID }}</td>
+                    <td>{{ notification.namae }}</td>
+                    <td>{{ notification.email }}</td>
+                    <td><a href="mailto:{{ notification.email }}"><button class="btn">通知</button></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <!-- 感染者一覧 -->
+            <div>
+                <table border="1" id="infection_table">
+                    <caption>感染者一覧</caption>
+                    <thead>
+                        <tr>
+                            <th>学籍番号</th>
+                            <th>月</th>
+                            <th>日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for infection_record in infection_list %}
+                        {% if infection_record.yakuwari == '感染' %}
+                        <tr>
+                            <td>{{ infection_record.gakuseki_ID }}</td>
+                            <td>{{ infection_record.months }}</td>
+                            <td>{{ infection_record.days }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 濃厚接触者一覧 -->
+            <div>
+                <table border="1" id="close_contact_table">
+                    <caption>濃厚接触者一覧</caption>
+                    <thead>
+                        <tr>
+                            <th>学籍番号</th>
+                            <th>月</th>
+                            <th>日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for infection_record in infection_list %}
+                        {% if infection_record.yakuwari == '濃厚接触' %}
+                        <tr>
+                            <td>{{ infection_record.gakuseki_ID }}</td>
+                            <td>{{ infection_record.months }}</td>
+                            <td>{{ infection_record.days }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br>
+        <a href="{{ url_for('tables_detail') }}" class="btn">テーブルの詳細を表示</a>
+        <br>
+        <a href="{{ url_for('logout') }}">ログアウト</a>
+    </div>
+
+    <script>
+        // JavaScript to count table rows and display counts
+        document.addEventListener('DOMContentLoaded', function() {
+            var infectionTable = document.getElementById('infection_table');
+            var closeContactTable = document.getElementById('close_contact_table');
+            var infectionCount = document.getElementById('infection_count');
+            var closeContactCount = document.getElementById('close_contact_count');
+
+            infectionCount.textContent += infectionTable.rows.length - 1; // Subtract 1 to exclude header row
+            closeContactCount.textContent += closeContactTable.rows.length - 1; // Subtract 1 to exclude header row
+        });
+    </script>
+</body>
+</html>

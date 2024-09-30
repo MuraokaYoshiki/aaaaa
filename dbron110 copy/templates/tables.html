@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者専用画面 - テーブル詳細</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>テーブルの詳細</h1>
+
+    <h2>gakusekiss テーブル</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>学籍番号</th>
+                <th>氏名</th>
+                <th>役割</th>
+                <th>メールアドレス</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.gakuseki_ID }}</td>
+                <td>{{ user.namae }}</td>
+                <td>{{ user.yakuwari }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>health_records テーブル</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>レコードID</th>
+                <th>学籍番号</th>
+                <th>月</th>
+                <th>日</th>
+                <th>時間帯</th>
+                <th>体温</th>
+                <th>関節痛</th>
+                <th>倦怠感</th>
+                <th>頭痛</th>
+                <th>喉の痛み</th>
+                <th>息切れ</th>
+                <th>咳</th>
+                <th>吐き気</th>
+                <th>腹痛</th>
+                <th>味覚障害</th>
+                <th>嗅覚障害</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in health_records %}
+            <tr>
+                <td>{{ record.record_ID }}</td>
+                <td>{{ record.gakuseki_ID }}</td>
+                <td>{{ record.months }}</td>
+                <td>{{ record.days }}</td>
+                <td>{{ record.zikan }}</td>
+                <td>{{ record.bodytemperature }}</td>
+                <td>{{ record.joint_pain }}</td>
+                <td>{{ record.malaise }}</td>
+                <td>{{ record.headache }}</td>
+                <td>{{ record.sore_throat }}</td>
+                <td>{{ record.shortness_breath }}</td>
+                <td>{{ record.cough }}</td>
+                <td>{{ record.nausea }}</td>
+                <td>{{ record.abdominal_pain }}</td>
+                <td>{{ record.taste_disorder }}</td>
+                <td>{{ record.olfactory_disorder }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>infection_records テーブル</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>レコードID</th>
+                <th>学籍番号</th>
+                <th>月</th>
+                <th>日</th>
+                <th>役割</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for infection_record in infection_records %}
+            <tr>
+                <td>{{ infection_record.record_ID }}</td>
+                <td>{{ infection_record.gakuseki_ID }}</td>
+                <td>{{ infection_record.months }}</td>
+                <td>{{ infection_record.days }}</td>
+                <td>{{ infection_record.yakuwari }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('admin_index') }}">管理者画面に戻る</a>
+</body>
+</html>

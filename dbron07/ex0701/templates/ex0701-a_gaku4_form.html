@@ -1,0 +1,21 @@
+<!-- ex0701-a_gaku4_form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+            <form action="/a_gaku4_2" method="POST">
+                学生を選択してください
+                <select name="gakusekicode">
+                    {% for rowdata in select_data.values %}
+                        <option value="{{rowdata[0]}}">{{rowdata[0]}}{{rowdata[1]}}</option>
+                    {% endfor %}
+                </select><br>
+                <input type="submit" value="選択">
+                <input type="reset" value="Reset">
+            </form>
+    </body>
+</html>

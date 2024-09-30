@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>Hello Flask</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>ようこそ</h1>
+        <p>次の処理を選択してください</p>
+        <h3>タクシー料金計算</h3>
+            <form action="/taxi" method="POST">
+                乗車距離を入力してください
+                <input type="text" name="kyori">m<br>
+                乗車した時間を入力してください(0-23)
+                <input type="text" name="jikan">時<br>
+                <input type="submit" value="料金計算">
+                <input type="reset" value="Reset">
+            </form>
+        <hr>
+        <h3>素数の計算</h3>
+        <form action="/prime" method="POST">
+            いくつまでの素数を表示しますか
+            <input type="text" name="num"><br>
+            <input type="submit" value="素数計算">
+            <input type="reset" value="Reset">    
+        </form>
+        <hr>
+        <h3>素因数分解</h3>
+        <form action="/prime_fact" method="POST">
+            素因数分解する数字を入力してください
+            <input type="text" name="num"><br>
+            <input type="submit" value="素因数分解">
+            <input type="reset" value="Reset">    
+        </form>
+    </body>
+</html>

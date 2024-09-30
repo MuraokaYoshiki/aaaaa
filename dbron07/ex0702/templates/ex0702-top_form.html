@@ -1,0 +1,19 @@
+<!-- ex0702-top_form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <form action="/upload_csv" method="POST" enctype="multipart/form-data">
+            ファイルの題名
+            <input type="text" name="subject"><br>            csvフィルの指定
+            <input type="file" name="upfile"><br>
+            <input type="submit" value="submit">
+            <input type="reset" value="reset">
+        </form>
+    </body>
+</html>
+

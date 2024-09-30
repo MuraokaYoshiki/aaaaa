@@ -1,0 +1,32 @@
+<!-- pr0602-top.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <form action="/pivot1" method="POST">
+            年度を選択してください
+            <input type="radio" name="acyear" value="2017">2017年度
+            <input type="radio" name="acyear" value="2018">2018年度
+            <input type="radio" name="acyear" value="2019">2019年度
+            <input type="radio" name="acyear" value="2020">2020年度<br>
+            <input type="submit" value="Pivot集計">
+            <input type="reset" value="reset"> 
+            preタグで表示する場合
+        </form>
+        <hr>
+        <form action="/pivot2" method="POST">
+            年度を選択してください
+            <input type="radio" name="acyear" value="2017">2017年度
+            <input type="radio" name="acyear" value="2018">2018年度
+            <input type="radio" name="acyear" value="2019">2019年度
+            <input type="radio" name="acyear" value="2020">2020年度<br>
+            <input type="submit" value="Pivot集計">
+            <input type="reset" value="reset"> 
+            表形式で表示する場合
+        </form>
+    </body>
+</html>

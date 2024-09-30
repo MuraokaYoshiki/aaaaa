@@ -1,0 +1,40 @@
+<!-- ex0701-se_update2_form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <table border>
+            <!-- テーブルの表題をcolumns属性をつかい表示する -->
+            <tr>
+                <th>ボタン</th>
+                {% for item in table_data.columns %}
+                    <th>{{item}}</th>
+                {% endfor %}
+            </tr>
+            <!--レコードを1行ずつ表示する-->
+            {% for rowdata in table_data.values %}
+            <tr>
+                <!-- このtd部がボタンを表示している-->
+                <td>
+                    <!--外見上はボタンだけのフォーム-->
+                    <form action="/se_update3" method="POST">
+                        <!--レコードを特定するために seisekiIDをhidden属性で受け渡す-->
+                        <input type="hidden" name="seisekiID" value="{{rowdata[0]}}">
+                        <input type="hidden" name="gakusekicode" value="{{rowdata[1]}}">
+                        <input type="submit" value="edit" >
+                    </form>                    
+                </td>
+                <!-- カラムの数だけ繰り返し処理 -->
+                {% for item in rowdata %}
+                    <td>{{item}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        </body>
+    </body>
+</html>

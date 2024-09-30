@@ -1,0 +1,26 @@
+<!-- form.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <form action="/search" method="POST">
+            観測地点
+            <input type="radio" name="Area" value="Sapporo">Sapporo
+            <input type="radio" name="Area" value="Sendai">Sendai
+            <input type="radio" name="Area" value="Tokyo">Tokyo
+            <input type="radio" name="Area" value="Suwa">Suwa
+            <input type="radio" name="Area" value="Nagoya">Nagoya
+            <input type="radio" name="Area" value="Osaka">Osaka
+            <input type="radio" name="Area" value="Fukuoka">Fukuoka
+            <input type="radio" name="Area" value="Naha">Naha<br>
+            検索年
+            <input type="number" name="Year" value="2000">年<br>
+            <input type="submit" value="Search">
+        </form>
+        <pre>{{message}}</pre>
+    </body>
+</html>

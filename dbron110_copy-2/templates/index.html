@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ホームページ</title>
+</head>
+<body>
+    <h1>こんにちは、{{ username }}さん！</h1>
+    <p>これはログイン後にのみアクセス可能なページです。</p>
+    <a href="{{ url_for('logout') }}">ログアウト</a>
+
+    <h2>記録を提出してください</h2>
+    <form action="{{ url_for('upload_record') }}" method="post" enctype="multipart/form-data">
+        <label for="csv_file">CSVファイルを選択:</label>
+        <input type="file" id="csv_file" name="csv_file" accept=".csv" required><br><br>
+        <input type="submit" value="アップロード">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

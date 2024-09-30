@@ -1,0 +1,39 @@
+<!-- ex0403-update_select.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <table border>
+            <!--表題を表示-->
+            <tr>
+                <th>ボタン</th>
+                {% for item in table_data.columns %}
+                    <th>{{item}}</th>
+                {% endfor %}
+            </tr>
+            <!--レコードを1行ずつ表示する-->
+            {% for row_data in table_data.values %}
+            <tr>
+                <!-- このtd部がボタンを表示している-->
+                <td>
+                    <!--外見上はボタンだけのフォーム-->
+                    <form action="/delete2" method="POST">
+                        <!--レコードを特定するために meiboIDをhidden属性で受け渡す-->
+                        <input type="hidden" name="meiboID" value="{{row_data[0]}}">
+                        <input type="submit" value="delete" >
+                    </form>                    
+                </td>
+                <!-- カラムの数だけ繰り返し処理 -->
+                {% for item in row_data %}
+                    <td>{{item}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </table> 
+    </body>
+</html>

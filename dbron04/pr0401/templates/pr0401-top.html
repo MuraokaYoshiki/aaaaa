@@ -1,0 +1,21 @@
+<!-- pr0401-top.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <form action="/search" method="POST">
+            都道府県名
+            <input type="radio" name="prefecture" value="東京都">東京都
+		    <input type="radio" name="prefecture" value="神奈川県">神奈川県
+            <input type="radio" name="prefecture" value="茨城県">茨城県
+            <input type="radio" name="prefecture" value="千葉県">千葉県
+            <input type="radio" name="prefecture" value="埼玉県">埼玉県<br>
+            <input type="submit" value="検索">
+            <input type="reset" value="リセット">
+        </form>
+    </body>
+</html>

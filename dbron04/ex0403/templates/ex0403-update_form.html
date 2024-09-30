@@ -1,0 +1,24 @@
+<!-- ex0403-insertform.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <form action="/update3" method="POST">
+            <!--table_dataにSeries形式(カラム名付き1次元ベクトルデータ)形式受け取り-->
+            氏名<input type="text" name="namae" value="{{table_data.namae}}">
+            かな<input type="text" name="yomi" value="{{table_data.yomi}}"><br>
+            珍しさ<input type="text" name="spec" value="{{table_data.spec}}">
+            総画数<input type="text" name="wcnt" value="{{table_data.wcnt}}"><br>
+            <!--Updateするレコードを特定するため主キーをhidden属性で受け渡す-->
+            <input type = "hidden" name="meiboID" value="{{table_data.meiboID}}">
+            <input type="submit" value="更新">
+            <input type="reset" value="リセット">
+        </form>
+
+        
+    </body>
+</html>

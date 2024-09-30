@@ -1,0 +1,26 @@
+<!-- ex0402-table.html -->
+<!doctype html>
+<html lang="ja">
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h2>{{title}}</h2>
+        <table border>
+            <tr>
+                {% for item in table_data.columns %}
+                    <th>{{item}}</th>
+                {% endfor %}
+            </tr>
+            {% for row_data in table_data.values %}
+            <tr>
+                {% for item in row_data %}
+                    <td>{{item}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </table> 
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ログイン</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* 薄い灰色の背景 */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 40px;
+        }
+        .login-form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #ffffff; /* 入力欄の背景色 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: #333333; /* タイトルの文字色 */
+        }
+        .login-form label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #333333; /* ラベルの文字色 */
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #cccccc; /* 入力欄の枠線色 */
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f0f0f0; /* 入力欄の背景色 */
+        }
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6EB5A5; /* ボタンの背景色 */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #FFF; /* ボタンの文字色 */
+        }
+        .login-form input[type="submit"]:hover {
+            background-color: #4C8C7D; /* ホバー時のボタンの背景色 */
+        }
+        .message {
+            margin-top: 16px;
+            color: #ff0000; /* メッセージの文字色 */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2>ログイン</h2>
+        <h3>新規登録もこちらからお願いします</h3>
+        <form action="{{ url_for('login') }}" method="post">
+            <label for="username">学籍番号:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">パスワード:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="ログイン or 新規登録">
+        </form>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

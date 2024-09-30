@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者画面</title>
+</head>
+<body>
+    <h1>{{ username }} 様の管理者画面</h1>
+    
+    <h2>通知一覧</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>学籍番号</th>
+                <th>月</th>
+                <th>日</th>
+                <th>氏名</th>
+                <th>メールアドレス</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for notification in notifications %}
+            <tr>
+                <td>{{ notification.gakuseki_ID }}</td>
+                <td>{{ notification.months }}</td>
+                <td>{{ notification.days }}</td>
+                <td>{{ notification.namae }}</td>
+                <td>{{ notification.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>感染者一覧</h2>
+    <p>感染者数: {{ infection_count }}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>学籍番号</th>
+                <th>月</th>
+                <th>日</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for infection_record in infection_list %}
+            {% if infection_record.yakuwari == '感染' %}
+            <tr>
+                <td>{{ infection_record.gakuseki_ID }}</td>
+                <td>{{ infection_record.months }}</td>
+                <td>{{ infection_record.days }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>濃厚接触者一覧</h2>
+    <p>濃厚接触者数: {{ close_contact_count }}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>学籍番号</th>
+                <th>月</th>
+                <th>日</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for infection_record in infection_list %}
+            {% if infection_record.yakuwari == '濃厚接触' %}
+            <tr>
+                <td>{{ infection_record.gakuseki_ID }}</td>
+                <td>{{ infection_record.months }}</td>
+                <td>{{ infection_record.days }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('logout') }}">ログアウト</a>
+</body>
+</html>

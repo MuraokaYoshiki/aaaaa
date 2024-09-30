@@ -1,0 +1,22 @@
+{
+    "python.analysis.extraPaths": [
+        "./test",
+        "./d05/fuku0501",
+        "./d05/fuku0501"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "172.30.0.10",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "dbron",
+            "database": "sampledb",
+            "username": "root",
+            "password": "1234"
+        }
+    ]
+}

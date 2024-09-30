@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者用ページ</title>
+    <!-- Add your CSS links here -->
+</head>
+<body>
+    <h1>管理者用ページ</h1>
+
+    <!-- ログアウトボタン -->
+    <form action="/logout" method="GET">
+        <button type="submit">ログアウト</button>
+    </form>
+
+    <h2>通知一覧</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ユーザーID</th>
+                <th>氏名</th>
+                <th>メールアドレス</th>
+                <th>通知する</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for notification in notifications %}
+            <tr>
+                <td>{{ notification.gakuseki_ID }}</td>
+                <td>{{ notification.date }}</td>
+                <td><a href="mailto:{{ notification.email }}" class="btn btn-primary">通知する</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+                            </table>
+</body>
+</html>

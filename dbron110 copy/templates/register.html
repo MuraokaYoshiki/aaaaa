@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ユーザー登録</title>
+</head>
+<body>
+    <h2>ユーザー登録</h2>
+    <form action="{{ url_for('register') }}" method="post">
+        <label for="name">氏名:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="role">ロール:</label><br>
+        <input type="radio" id="student" name="role" value="学生" required>
+        <label for="student">学生</label><br>
+        <input type="radio" id="teacher" name="role" value="教員" required>
+        <label for="teacher">教員</label><br>
+        <input type="radio" id="staff" name="role" value="職員" required>
+        <label for="staff">職員</label><br><br>
+        <label for="email">メールアドレス:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" value="登録">
+    </form>
+</body>
+</html>
