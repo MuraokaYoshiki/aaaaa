@@ -1,0 +1,161 @@
+/* 全体のリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* バックグラウンド全体のカラー */
+body {
+    background-color: #F9E65D; /* 画像から取得した黄色 */
+    font-family: Arial, sans-serif;
+    color: #FFFFFF; /* 白をテキストカラーに */
+}
+
+/* 固定メニューのスタイル */
+.fixed-menu {
+    position: fixed; /* スクロールしても位置が固定される */
+    top: 10px; /* 上から10pxの位置に固定 */
+    right: 10px; /* 右から10pxの位置に固定 */
+    background-color: #F39A6D; /* オレンジ寄りのピンク色 */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000; /* 前面に表示 */
+}
+
+.fixed-menu ul {
+    list-style: none;
+}
+
+.fixed-menu ul li {
+    margin-bottom: 10px;
+}
+
+.fixed-menu ul li a {
+    color: #FFFFFF; /* リンクテキストは白 */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* SNSリンクのスタイル */
+.fixed-sns {
+    position: fixed; /* 固定位置 */
+    bottom: 10px; /* 画面の下部に固定 */
+    right: 10px; /* 画面の右端に固定 */
+    display: flex;
+    gap: 10px;
+    z-index: 1000; /* 前面に表示 */
+}
+
+.fixed-sns a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.fixed-sns a img:hover {
+    transform: scale(1.1); /* ホバー時にアイコンが大きくなる */
+}
+
+/* ヒーローセクション */
+.hero {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding: 40px 0; /* 余白を追加してテキストを見やすく */
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-text {
+    margin-top: 20px;
+    color: #FFFFFF;
+    font-size: 2.5rem; /* フォントサイズを少し小さくしてバランスを取る */
+    background-color: #F39A6D;
+    padding: 15px 25px;
+    border-radius: 10px;
+    z-index: 2;
+    display: inline-block; /* テキストボックスをコンパクトに表示 */
+}
+
+/* イベント概要・スケジュール・ギャラリーセクション */
+.about, .schedule, .gallery {
+    padding: 60px 40px; /* セクション全体に余白を追加 */
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 20px; /* 角丸を増やして柔らかい印象に */
+    margin: 40px auto; /* 上下に余白を追加 */
+    max-width: 700px; /* 横幅をさらに狭く制限 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 軽い影を追加して浮かせる */
+}
+
+.about h2, .schedule h2, .gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #F39A6D;
+}
+
+.about p, .schedule ul {
+    font-size: 1.2rem;
+    line-height: 1.8; /* 行間を広げて読みやすく */
+    color: #003366;
+    max-width: 600px; /* テキスト幅をさらに制限して詰め込みすぎを防ぐ */
+    margin: 0 auto;
+}
+
+/* ギャラリー */
+.gallery-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gallery-images img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 軽い影をつける */
+}
+
+/* フッター */
+footer {
+    background-color: #F39A6D;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* メディアクエリ：大画面向け */
+@media (min-width: 1024px) {
+    .hero-text {
+        font-size: 3rem; /* 大画面では文字を大きく */
+    }
+
+    .about, .schedule, .gallery {
+        padding: 80px 60px;
+        max-width: 800px; /* 大画面ではやや広めに設定 */
+    }
+}
+
+/* メディアクエリ：小画面向け */
+@media (max-width: 768px) {
+    .hero-text {
+        font-size: 2rem; /* 小画面では文字を少し小さく */
+        padding: 10px 15px;
+    }
+
+    .about, .schedule, .gallery {
+        padding: 40px 20px;
+        max-width: 90%; /* 小画面では幅を制限 */
+    }
+}
